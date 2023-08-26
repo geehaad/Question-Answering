@@ -1,4 +1,4 @@
-# Question Answering system using Pre-trained Bert=based model
+# Question Answering system using Pre-trained Bert based model
 
 <ul> Python Packages Required: 
     <li>
