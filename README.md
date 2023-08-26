@@ -6,14 +6,14 @@ Clone the source
 
 
 
+<h3>Requirements:</h3>
 <ul>
-    <h3>Requirements:</h3>
     <li>Python version => 3.6 is recommended
     <li>Operating System: Windows
 </ul>
 
+<h3>Python Packages Required: </h3>
 <ul> 
-    <h3>Python Packages Required: </h3>
     <li>
         datasets==2.14.4
     <li>
