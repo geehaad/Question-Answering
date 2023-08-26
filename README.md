@@ -2,9 +2,12 @@
 
 
 ## Setup Instructions
-Clone the source
-
-
+<h3>Clone the source</h3>
+<ul>
+    ```
+	git clone https://github.com/geehaad/Question-Answering.git
+	```
+</ul>
 
 <h3>Requirements:</h3>
 <ul>
