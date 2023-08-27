@@ -33,30 +33,27 @@
 <h3>To use the question answering system, follow these steps:<h3>
 
 1. Clone the source
-    * In CMD write: 
+* In CMD write: 
 
 	```
 	git clone https://github.com/geehaad/Question-Answering.git
 	```
-    * Then:
+* Then:
     ```
     cd Question-Answering
     ```
 2. Create a virtual environment (replace venv with your virtual environment name):
-    * using conda conda, on cmd:
-
+* using conda conda, on cmd:
+    ```
     Conda create -p venv python==3.8
+    ```
 
 3. Activate the virtual environment:
-
+    ```
     conda sctivate venv
-    
- 
-2. Install the required dependencies:
     ```
-    pip install -r requirements.txt
-    ```
-3. Run the main script:s
+
+4. Run the main script:s
     ```
     python src/components/main.py
     ```
