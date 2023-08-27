@@ -2,63 +2,66 @@
 
 Question Answering models can retrieve the answer to a question from a given text, which is useful for searching for an answer in a document. <br> Some question answering models can generate answers without context! (Hugging Face)
 
-<h2>Types of Questions Answering Models</h2>
+<h2>Types of Question Answering Models</h2>
 <ul>
 <li>Extractive Question Answering 
 <li>Open Generative Question Answering 
 <li>Closed Generative Question Answering 
 </ul>
 
-Our system is the Extractive Question Answering system, which means that you have a context and a question to ask, and the model assume that the answer is inside the context provided.
+Our system is the Extractive Question Answering system, which means that you have a context and a question to ask, and the model assumes that the answer is inside the context provided.
 
 <h2>Dataset Overview</h2>
-The Question Answering system in this project is evaluated using the Stanford Question Answering Dataset (SQUAD). <br>SQUAD is a widely used benchmark dataset for evaluating machine reading comprehension and question answering systems.<br>
+The Question Answering system in this project is evaluated using the Stanford Question Answering Dataset <code>(SQUAD)</code>. <br>SQUAD is a widely used benchmark dataset for evaluating machine reading comprehension and question answering systems.<br>
 The SQUAD dataset contains a diverse set of passages from a variety of topics and genres.
 <br>
 <h3>Each example in the dataset consists of the following components:</h3>
 <ul>
-<li>Context Paragraph: A corpus  that contains the information from which the answer can be extracted.
+<li>Context Paragraph: A corpus that contains the information from which the answer can be extracted.
 <li>Question: A question related to the context, formulated to prompt the model to extract the relevant answer.
 <li>Answer Span: The exact span of text within the context paragraph that serves as the answer to the question.
 </ul>
-The dataset can be find here:<a href= "https://huggingface.co/datasets/squad"> squad linl </a>
+The dataset can be found here: <a href= "https://huggingface.co/datasets/squad">SQuAD link</a>
 
 <h2>Model and Question Answering System</h2>
+<ul>
+<li>Model used:
     <ul>
-    <li>Model used:
-        <ul>
-          <li> <b> Model name:'distilbert-base-cased-distilled-squad'</b> a variant of the DistilBERT model that has been fine-tuned specifically for the Stanford Question Answering Dataset (SQuAD). This model is designed to accurately extract answers from a given context.
-          </ul>
-    <li>How the System Works:
-        <ul>
-            <li> 
-        </ul>
+        <li><b>Model name: <code>'distilbert-base-cased-distilled-squad'</b></code> - a variant of the DistilBERT model that has been fine-tuned specifically for the Stanford Question Answering Dataset (SQuAD). This model is designed to accurately extract answers from a given context.</li>
     </ul>
+<li>How the System Works:
+    <ul>
+    Our Question Answering system takes a context paragraph and a question as inputs and aims to extract relevant answer from the context. Here's how the system operates:
+        <li><code>Tokenization: </code>  The system use the first 100 Questions and contexts of squad dataset, The context paragraph and question are tokenized into subword tokens using the tokenizer provided by the Hugging Face Transformers library for AutoModelForQuestionAnswering. 
+        <li><code>Process input through the model: </code>The tokenized inputs are passed through the distilbert-base-cased-distilled-squad model. This model has been fine-tuned on squad.
+        <li><code>Extract the answer span: </code> The model's output consists of logits (probabilities) for each token in the context paragraph. The tokens with the highest start and end logits is the to the beginning and end of the answer span within the context.
+        <li><code>Generating Answer: </code>By decoding the answer span tokens, we generate the final answer string. This answer is then returned as the output of the system.
+    </ul>
+</ul>
 
 <h2>Project Directory Structure</h2>
-The project directory is organized in a structured manner to facilitate easy navigation and understanding. Below is an overview of the key folders and files within the project:<br>
-        
-        Question-Answering/
-        |-- notebooks/
-        |   |-- trails.ipynb
-        |-- src/
-        |   |-- __init__.py
-        |   |-- components/
-        |   |   |-- __init__.py
-        |   |   |-- helper.py
-        |   |   |-- main.py
-        |-- |-- tests/
-        |   |-- |-- __init__.py
-        |   |-- |-- test_answer_questions.py
-        |-- requirements.txt
-        |-- README.md
-        
-<h3>Project Directory Structure</h3>
+The project directory is organized in a structured manner to facilitate easy navigation and understanding. Below is an overview of the key folders and files within the project:
 
-<p><code>src/</code>: This folder contains the main source code of the project.</p>
-<p><code>components/</code>: The heart of the project, where the primary functionality resides.</p>
+<pre>
+Question-Answering/
+|-- notebooks/
+|   |-- trails.ipynb
+|-- src/
+|   |-- __init__.py
+|   |-- components/
+|   |   |-- __init__.py
+|   |   |-- helper.py
+|   |   |-- main.py
+|   |-- tests/
+|   |   |-- __init__.py
+|   |   |-- test_answer_questions.py
+|-- requirements.txt
+|-- README.md
+</pre>
+
+
 <p><code>helper.py</code>: Houses the <code>answer_questions</code> function responsible for processing context and questions to extract answers, as well as the <code>apply_answer_questions</code> function that applies the process to a dataset.</p>
-<p><code>main.py</code>: The entry point of the project, where the main function utilizes the <code>apply_answer_questions</code> function on a subset of the dataset and saves the results in a CSV file.</p>
+
 <p><code>notebooks/</code>: Contains Jupyter notebooks used for exploration and experimentation.</p>
 <p><code>exploration.ipynb</code>: Notebook where various models and techniques were explored and tested.</p>
 <p><code>tests/</code>: Holds the pytest test suite for verifying the functionality of the implemented functions.</p>
@@ -66,24 +69,27 @@ The project directory is organized in a structured manner to facilitate easy nav
 <p><code>requirements.txt</code>: Lists the Python packages required for the project to run successfully.</p>
 <p><code>README.md</code>: The central documentation file containing essential information about the project, its usage, and directory structure.</p>
 
-<h3>How Files Are Used</h3>
 
-<p><code>helper.py</code>: This file contains the core functions that enable the question answering system. The <code>answer_questions</code> function takes a context and question as input and extracts answers using the chosen model. The <code>apply_answer_questions</code> function applies the process to a dataset, generating dictionaries containing the question, original answer, and detected answer.</p>
+<h2>How Files Are Used</h2>
+<code>src/</code>: This folder contains the main source code of the project which are:
+<ul></p>
+    <li><p><code>components/</code>: The heart of the project, where the primary functionality resides, and contains:</p>
+        <ul>
+            <li>
+            <code>helper.py</code>: This file contains the core functions that enable the question answering system. 
+            1. The <code>answer_questions</code> function takes a context and a question as input and extracts answers using the chosen model. 
+            2. The <code>apply_answer_questions</code> function applies the process to a dataset, generating dictionaries containing the question, original answer, and detected answer.
+            <li>
+            <p><code>main.py</code>: The entry point of the project, where the main function utilizes the <code>apply_answer_questions</code> function on a subset of the dataset, 100 rows and saves the results in a CSV file.</p>
+        </ul>    
+</ul>
 
-<p><code>main.py</code>: The <code>main.py</code> script serves as the entry point of the project. It utilizes the <code>apply_answer_questions</code> function to process a subset of the dataset, extracting and saving answers in a CSV file.</p>
+<code>exploration.ipynb</code>: The Jupyter notebook <code>exploration.ipynb</code> is a sandbox for experimentation. It's used to explore the dataset and try different models before integrating them into the main system.
 
-<p><code>exploration.ipynb</code>: The Jupyter notebook <code>exploration.ipynb</code> is a sandbox for experimentation. It's used to explore different models, techniques, and variations before integrating them into the main system.</p>
-
-<p><code>test.py</code>: The <code>test.py</code> file hosts pytest test cases that validate the accuracy of the implemented functions. These tests help ensure the reliability and correctness of the question answering system.</p>
-
-<p>By organizing the project in this manner, we maintain clarity and modularity, making it easier to manage, test, and iterate upon the various components.</p>
-
-<p>Feel free to customize this description to match your actual project's file structure and usage.</p>
+<code>test.py</code>: The <code>test.py</code> file hosts pytest test cases that validate the accuracy of the implemented functions. These tests help ensure the reliability and correctness of the question answering system.
 
 
-
-<h2> Setup Instructions </h2>
-
+<h2>Setup Instructions</h2>
 <h3>Requirements:</h3>
 <ul>
     <li>Python version => 3.6 is recommended
@@ -111,30 +117,29 @@ The project directory is organized in a structured manner to facilitate easy nav
 
 </ul>
 
-<h3>To use the question answering system, follow these steps:<h3>
+<h3>To use the question answering system, follow these steps:</h3>
 
 1. Clone the source
-* In CMD write: 
-
-	```
+    ```
 	git clone https://github.com/geehaad/Question-Answering.git
 	```
-* Then:
+    Then:
     ```
     cd Question-Answering
     ```
-2. Create a virtual environment, while you are in the project directory (replace venv with your virtual environment name):
-* using conda, in cmd write:
-    ```
-    Conda create -p venv python==3.8
-    ```
+2. Create a virtual environment (replace `venv` with your virtual environment name):
+    * Using conda, in CMD write:
+        ```
+        conda create -p venv python==3.8
+        ```
 
 3. Activate the virtual environment:
     ```
-    conda sctivate venv
+    conda activate venv
     ```
 
-4. Run the main script:s
+4. Run the main script:
     ```
     python src/components/main.py
     ```
+</code>
