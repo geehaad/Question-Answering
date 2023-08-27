@@ -1,4 +1,17 @@
-# Question Answering system using Pre-trained Bert based model
+# Question Answering system using Pre-trained Bert based model 
+
+Question Answering models can retrieve the answer to a question from a given text, which is useful for searching for an answer in a document. <br> Some question answering models can generate answers without context! (Hugging Face)
+
+<h2>Types of Questions Answering Models</h2>
+<ul>
+<li>Extractive Question Answering 
+<li>Open Generative Question Answering 
+<li>Closed Generative Question Answering 
+</ul>
+
+Our system is the Extractive Question Answering system, which means that you have a context and a question to ask, and the model assume that the answer is inside the context provided.
+
+
 
 
 ## Setup Instructions
@@ -42,8 +55,8 @@
     ```
     cd Question-Answering
     ```
-2. Create a virtual environment (replace venv with your virtual environment name):
-* using conda conda, on cmd:
+2. Create a virtual environment, while you are in the project directory (replace venv with your virtual environment name):
+* using conda, in cmd write:
     ```
     Conda create -p venv python==3.8
     ```
