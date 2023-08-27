@@ -76,6 +76,7 @@ The dataset can be found here: <a href= "https://huggingface.co/datasets/squad">
     ```
     python src/components/main.py
     ```
+5. The output is a csv file called 'output' in your directory.
 </code>
 
 <h2>Model and Question Answering System</h2>
