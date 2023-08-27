@@ -133,9 +133,9 @@ Question-Answering/
             <li>
             <p><code>main.py</code>: The entry point of the project, where the main function utilizes the <code>apply_answer_questions</code> function on a subset of the dataset, 100 rows and saves the results in a CSV file.</p>
         </ul>   
-    <li><p><code>tests/test.py</code>:</p>
+    <li><p><code>tests/</code>:</p>
     <ul>
-    <li><p><code>test.py</code>: Contains pytest test cases that validate the accuracy of the question answering system.</p>
+    <li><p><code>test_answer_questions.py</code>: Contains pytest test cases that validate the accuracy of the question answering system.</p>
     </ul>     
 </ul>
 <p><code>notebooks/</code>:
