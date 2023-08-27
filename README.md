@@ -1,6 +1,6 @@
-# Question Answering system using Pre-trained Bert based model 
+# Question Answering system using a Pre-trained Bert based model 
 
-Question Answering models can retrieve the answer to a question from a given text, which is useful for searching for an answer in a document. <br> Some question answering models can generate answers without context! (Hugging Face)
+Question Answering models can retrieve the answer to a question from a given text, which is useful for searching for an answer in a document. <br> Some question-answering models can generate answers without context! (Hugging Face)
 
 <h2>Types of Question Answering Models</h2>
 <ul>
@@ -12,7 +12,7 @@ Question Answering models can retrieve the answer to a question from a given tex
 Our system is the Extractive Question Answering system, which means that you have a context and a question to ask, and the model assumes that the answer is inside the context provided.
 
 <h2>Dataset Overview</h2>
-The Question Answering system in this project is evaluated using the Stanford Question Answering Dataset <code>(SQUAD)</code>. <br>SQUAD is a widely used benchmark dataset for evaluating machine reading comprehension and question answering systems.<br>
+The question-answering system in this project is evaluated using the Stanford Question Answering Dataset <code>(SQUAD)</code>. <br>SQUAD is a widely used benchmark dataset for evaluating machine reading comprehension and question-answering systems.<br>
 The SQUAD dataset contains a diverse set of passages from a variety of topics and genres.
 <br>
 <h3>Each example in the dataset consists of the following components:</h3>
@@ -51,13 +51,13 @@ The dataset can be found here: <a href= "https://huggingface.co/datasets/squad">
 
 </ul>
 
-<h3>To use the question answering system, follow these steps:</h3>
+<h3>To use the question-answering system, follow these steps:</h3>
 
 1. Clone the source
     ```
 	git clone https://github.com/geehaad/Question-Answering.git
 	```
-    Then:
+    Go to the directory you cloned the repo in, open cmd:
     ```
     cd Question-Answering
     ```
@@ -69,14 +69,19 @@ The dataset can be found here: <a href= "https://huggingface.co/datasets/squad">
 
 3. Activate the virtual environment:
     ```
-    conda activate venv
+    conda activate venv\
     ```
 
 4. Run the main script:
     ```
     python src/components/main.py
     ```
-5. The output is a csv file called 'output' in your directory.
+5. The output is a CSV file called 'output' in your directory.
+   
+6. To run the testing file:
+    ```
+    pytest src/tests/test_answer_questions.py
+    ```
 </code>
 
 <h2>Model and Question Answering System</h2>
@@ -87,11 +92,11 @@ The dataset can be found here: <a href= "https://huggingface.co/datasets/squad">
     </ul>
 <li>How the System Works:
     <ul>
-    Our Question Answering system takes a context paragraph and a question as inputs and aims to extract relevant answer from the context.<br>
+    Our Question Answering system takes a context paragraph and a question as inputs and aims to extract relevant answers from the context.<br>
     Using multiple steps:
-        <li><code>Tokenization:</code>  The system takes a question and a contexts as an input, then context paragraph and question are tokenized into subword tokens using the tokenizer provided by the Hugging Face Transformers library of AutoModelForQuestionAnswering. 
-        <li><code>Process input through the model:</code> The tokenized inputs are passed through the distilbert-base-cased-distilled-squad model. This model has been fine-tuned on squad dataset.
-        <li><code>Extract the answer span:</code> The model's output consists of logits (probabilities) for each token in the context paragraph. The tokens with the highest start and end logits is the to the beginning and end of the answer span within the context.
+        <li><code>Tokenization:</code>  The system takes a question and a context as input, then the context paragraph and question are tokenized into subword tokens using the tokenizer provided by the Hugging Face Transformers library of AutoModelForQuestionAnswering. 
+        <li><code>Process input through the model:</code> The tokenized inputs are passed through the distilbert-base-cased-distilled-squad model. This model has been fine-tuned on the squad dataset.
+        <li><code>Extract the answer span:</code> The model's output consists of logits (probabilities) for each token in the context paragraph. The tokens with the highest start and end logits are to the beginning and end of the answer span within the context.
         <li><code>Generating Answer:</code> By decoding the answer span tokens, we generate the final answer string. This answer is then returned as the output of the system.
         <li><code>Evaluate the model:</code> using the first 100 rows of the squad dataset to evaluate the performance of the QAS.
         <li><code>Testing:</code> By using pytest with multiple test cases.
@@ -125,9 +130,9 @@ Question-Answering/
     <li><p><code>components/</code>: The heart of the project, where the primary functionality resides, and contains:</p>
         <ul>
             <li>
-            <code>helper.py</code>: This file contains the core functions that enable the question answering system, These functions are: 
+            <code>helper.py</code>: This file contains the core functions that enable the question-answering system, These functions are: 
             <ul>
-                <li>The <code>answer_questions</code> function takes a context and a question as input, tokenize, and extracts answers using the chosen model. 
+                <li>The <code>answer_questions</code> function takes a context and a question as input, tokenizes, and extracts answers using the chosen model. 
                 <li>The <code>apply_answer_questions</code> function applies the answer_questions function to a dataset, generating dictionaries containing the question, original answer, and detected answer.
             </ul>
             <li>
