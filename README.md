@@ -33,12 +33,10 @@ The dataset can be found here: <a href= "https://huggingface.co/datasets/squad">
     <ul>
     Our Question Answering system takes a context paragraph and a question as inputs and aims to extract relevant answer from the context.<br>
     Using multiple steps:
-
         <li><code>Tokenization:</code>  The system takes a question and a contexts as an input, then context paragraph and question are tokenized into subword tokens using the tokenizer provided by the Hugging Face Transformers library of AutoModelForQuestionAnswering. 
         <li><code>Process input through the model:</code> The tokenized inputs are passed through the distilbert-base-cased-distilled-squad model. This model has been fine-tuned on squad dataset.
         <li><code>Extract the answer span:</code> The model's output consists of logits (probabilities) for each token in the context paragraph. The tokens with the highest start and end logits is the to the beginning and end of the answer span within the context.
         <li><code>Generating Answer:</code> By decoding the answer span tokens, we generate the final answer string. This answer is then returned as the output of the system.
-
     </ul>
 </ul>
 
