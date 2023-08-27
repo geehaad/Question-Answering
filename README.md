@@ -135,7 +135,7 @@ Question-Answering/
         </ul>   
     <li><p><code>tests/</code>:</p>
     <ul>
-    <li><p><code>test_answer_questions.py</code>: Contains pytest test cases that validate the accuracy of the question answering system.</p>
+    <li><p><code>test_answer_questions.py</code>: Contains pytest test cases that validate the accuracy of the question answering system, the function in this file uses parameterized testing to check the behavior of the answer_questions function in different situations.</p>
     </ul>     
 </ul>
 <p><code>notebooks/</code>:
