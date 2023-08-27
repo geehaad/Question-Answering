@@ -27,15 +27,18 @@ The dataset can be found here: <a href= "https://huggingface.co/datasets/squad">
 <ul>
 <li>Model used:
     <ul>
-        <li><b>Model name: <code>'distilbert-base-cased-distilled-squad'</b></code> - a variant of the DistilBERT model that has been fine-tuned specifically for the Stanford Question Answering Dataset (SQuAD). This model is designed to accurately extract answers from a given context.</li>
+        <li><b>Model name: <code>'distilbert-base-cased-distilled-squad'</b></code> - a variant of the DistilBERT model that has been fine-tuned specifically for the SQuAD. This model is designed to accurately extract answers from a given context.</li>
     </ul>
 <li>How the System Works:
     <ul>
-    Our Question Answering system takes a context paragraph and a question as inputs and aims to extract relevant answer from the context. Here's how the system operates:
-        <li><code>Tokenization: </code>  The system use the first 100 Questions and contexts of squad dataset, The context paragraph and question are tokenized into subword tokens using the tokenizer provided by the Hugging Face Transformers library for AutoModelForQuestionAnswering. 
-        <li><code>Process input through the model: </code>The tokenized inputs are passed through the distilbert-base-cased-distilled-squad model. This model has been fine-tuned on squad.
-        <li><code>Extract the answer span: </code> The model's output consists of logits (probabilities) for each token in the context paragraph. The tokens with the highest start and end logits is the to the beginning and end of the answer span within the context.
-        <li><code>Generating Answer: </code>By decoding the answer span tokens, we generate the final answer string. This answer is then returned as the output of the system.
+    Our Question Answering system takes a context paragraph and a question as inputs and aims to extract relevant answer from the context.<br>
+    Using multiple steps:
+
+        <li><code>Tokenization:</code>  The system takes a question and a contexts as an input, then context paragraph and question are tokenized into subword tokens using the tokenizer provided by the Hugging Face Transformers library of AutoModelForQuestionAnswering. 
+        <li><code>Process input through the model:</code> The tokenized inputs are passed through the distilbert-base-cased-distilled-squad model. This model has been fine-tuned on squad dataset.
+        <li><code>Extract the answer span:</code> The model's output consists of logits (probabilities) for each token in the context paragraph. The tokens with the highest start and end logits is the to the beginning and end of the answer span within the context.
+        <li><code>Generating Answer:</code> By decoding the answer span tokens, we generate the final answer string. This answer is then returned as the output of the system.
+
     </ul>
 </ul>
 
@@ -59,17 +62,6 @@ Question-Answering/
 |-- README.md
 </pre>
 
-
-<p><code>helper.py</code>: Houses the <code>answer_questions</code> function responsible for processing context and questions to extract answers, as well as the <code>apply_answer_questions</code> function that applies the process to a dataset.</p>
-
-<p><code>notebooks/</code>: Contains Jupyter notebooks used for exploration and experimentation.</p>
-<p><code>exploration.ipynb</code>: Notebook where various models and techniques were explored and tested.</p>
-<p><code>tests/</code>: Holds the pytest test suite for verifying the functionality of the implemented functions.</p>
-<p><code>test.py</code>: Contains pytest test cases that validate the accuracy of the question answering system.</p>
-<p><code>requirements.txt</code>: Lists the Python packages required for the project to run successfully.</p>
-<p><code>README.md</code>: The central documentation file containing essential information about the project, its usage, and directory structure.</p>
-
-
 <h2>How Files Are Used</h2>
 <code>src/</code>: This folder contains the main source code of the project which are:
 <ul></p>
@@ -83,11 +75,16 @@ Question-Answering/
             <p><code>main.py</code>: The entry point of the project, where the main function utilizes the <code>apply_answer_questions</code> function on a subset of the dataset, 100 rows and saves the results in a CSV file.</p>
         </ul>    
 </ul>
+<p><code>notebooks/</code>:
+<ul> <li><code>exploration.ipynb</code>: The Jupyter notebook <code>exploration.ipynb</code> is a sandbox for experimentation. It's used to explore the dataset and try different models before integrating them into the main system.
+</ul>
 
-<code>exploration.ipynb</code>: The Jupyter notebook <code>exploration.ipynb</code> is a sandbox for experimentation. It's used to explore the dataset and try different models before integrating them into the main system.
-
-<code>test.py</code>: The <code>test.py</code> file hosts pytest test cases that validate the accuracy of the implemented functions. These tests help ensure the reliability and correctness of the question answering system.
-
+<p><code>tests/test.py</code>:</p>
+<ul>
+<li><p><code>test.py</code>: Contains pytest test cases that validate the accuracy of the question answering system.</p>
+</ul>
+<p><code>requirements.txt</code>: Lists the Python packages required for the project to run successfully.</p>
+<p><code>README.md</code>: The central documentation file containing essential information about the project, its usage, and directory structure.</p>
 
 <h2>Setup Instructions</h2>
 <h3>Requirements:</h3>
