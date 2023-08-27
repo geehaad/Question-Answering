@@ -52,7 +52,7 @@ def answer_questions(context, question, tokenizer = tokenizer):
     predicted_answer = tokenizer.decode(predict_answer_tokens)
 
     # Print the predicted answer.
-    print("Predicted Answer:", predicted_answer)
+    print("Predicted Answer:", predicted_answer, "\n*********************\n")
     
     return predicted_answer
 
