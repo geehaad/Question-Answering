@@ -5,8 +5,9 @@ import pytest
 @pytest.mark.parametrize("context, question, expected_answer", [
     # Valid answer
     ("France is a very beautiful country, and it has multiple cities. However, the capital of France is Paris.", "What is the capital of France?", "Paris"),
-    # No answer found
+    # Valid answer
     ("The sky is blue, the flower is red, and the car is green", "What is the color of the car?", "Green"),
+    # No Answer Found
     ("      ", "What is the name of president of Italy?", "No answer found"),
     # No relevant information
     ("The flower is red.", "What is the color of the car?", "No answer found"),
