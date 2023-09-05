@@ -1,3 +1,4 @@
+import pandas as pd
 import gradio as gr
 from src.components.helper import answer_questions, apply_answer_questions
 
@@ -8,15 +9,16 @@ def question_answering_interface(context, question):
     answer = answer_questions(context, question)  
     return answer
 
-def df_interface(df):
-    # Call apply_answer_questions function with df
-    dataframe = df.apply(apply_answer_questions, axis=1, result_type="expand")
-    dataframe.to_csv("output.csv", index=False)
-    return dataframe
+def df_interface(df_input):
+    # Read the CSV file from the Gradio file input
+    dataframe = pd.read_csv(df_input.name, encoding='utf-8')
+    df_output = dataframe.apply(apply_answer_questions, axis=1, result_type="expand")
+    df_output.columns = ['Question',  'Detected_answer']
+    df_output.to_csv(r"D:\QA\Question-Answering\output2.csv", index=False)
+    return df_output
 
 
-# Initialize an empty conversation history
-conversation_history = []
+   
 
 # Create the Gradio interface
 with gr.Blocks() as demo:
@@ -24,18 +26,19 @@ with gr.Blocks() as demo:
 
     # Tab for answer_questions func 
     with gr.Tab("Single QAs"):
-        context_input = gr.Textbox(label="Context", type="text", placeholder="Enter context here...", lines=10)
-        question_input = gr.Textbox(label="Question", type="text",placeholder="Enter question here...")
+        context_input = gr.Textbox(label="context", type="text", placeholder="Enter context here...", lines=10)
+        question_input = gr.Textbox(label="question", type="text",placeholder="Enter question here...")
         qa_button = gr.Button("Get Answer")
         qa_output = gr.Textbox(label="Answer", type="text", placeholder="Answer will be displayed here...")
 
         
 
-        # Tab for DataFrame upload (func1)
-    with gr.Tab("Upload DataFrame"):
-        df_input = gr.File(label="Upload DataFrame (CSV)")
-        df_output = gr.Dataframe(headers=["Original DataFrame"])
+ # Tab for JSON file upload (func1)
+    with gr.Tab("Upload CSV File"):
+        df_input = gr.File(label="Upload CSV File")
         df_button = gr.Button("Process")
+        df_output = gr.Dataframe(headers=["Question, Detected_answer"])
+        
 
     # Define actions when buttons are clicked
     qa_button.click(question_answering_interface, inputs=[context_input, question_input], outputs=qa_output)
