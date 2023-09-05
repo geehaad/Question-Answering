@@ -75,8 +75,7 @@ def apply_answer_questions(row):
     # A dictionary contains the results.
     result = {
               "Question": question, 
-              "Original_answer": row["answers"]["text"][0],
-               "Detected_answer": answer
+              "Detected_answer": answer
             }
 
     return result
