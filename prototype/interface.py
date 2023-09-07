@@ -33,7 +33,7 @@ with gr.Blocks() as demo:
 
         
 
- # Tab for Jcsv file upload 
+    # Tab for  CSV file upload 
     with gr.Tab("Upload CSV File"):
         df_input = gr.File(label="Upload CSV File")
         df_button = gr.Button("Process")
