@@ -10,7 +10,7 @@ Question-answering models can retrieve the answer to a question from a given tex
 
 Our system is the Extractive Question Answering system, which means that you have a context and a question to ask, and the model assumes that the answer is inside the context provided.
 
-<h2>QA-system interface:</h2>
+<h2>QA-system interface using <code>Gradio</code>:</h2>
 <img src="img/1.png" alt="Insert text">
 <img src="img/2.PNG" alt="Upload Folder">
 
