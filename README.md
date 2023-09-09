@@ -1,4 +1,4 @@
-# Question Answering system using a Pre-trained Bert based model 
+# Question Answering system using a Pre-trained Bert based model 💬
 
 Question-answering models can retrieve the answer to a question from a given text, which is useful for searching for an answer in a document. <br> Some question-answering models can generate answers without context! (Hugging Face)
 <h2>Types of Question Answering Models</h2>
@@ -10,7 +10,7 @@ Question-answering models can retrieve the answer to a question from a given tex
 
 Our system is the Extractive Question Answering system, which means that you have a context and a question to ask, and the model assumes that the answer is inside the context provided.
 
-<h2>QA-system interface using <code>Gradio</code>:</h2>
+<h2>QA-system interface using <code>Gradio</code> 🚀:</h2>
 <img src="img/1.png" alt="Insert text">
 <img src="img/2.PNG" alt="Upload Folder">
 
