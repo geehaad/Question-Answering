@@ -1,7 +1,6 @@
 # Question Answering system using a Pre-trained Bert based model 
 
-Question Answering models can retrieve the answer to a question from a given text, which is useful for searching for an answer in a document. <br> Some question-answering models can generate answers without context! (Hugging Face)
-
+Question-answering models can retrieve the answer to a question from a given text, which is useful for searching for an answer in a document. <br> Some question-answering models can generate answers without context! (Hugging Face)
 <h2>Types of Question Answering Models</h2>
 <ul>
 <li>Extractive Question Answering 
@@ -10,6 +9,10 @@ Question Answering models can retrieve the answer to a question from a given tex
 </ul>
 
 Our system is the Extractive Question Answering system, which means that you have a context and a question to ask, and the model assumes that the answer is inside the context provided.
+
+<h2>QA-system interface:</h2>
+<img src="img/1.png" alt="Insert text">
+<img src="img/2.PNG" alt="Upload Folder">
 
 <h2>Dataset Overview</h2>
 The question-answering system in this project is evaluated using the Stanford Question Answering Dataset <code>(SQUAD)</code>. <br>SQUAD is a widely used benchmark dataset for evaluating machine reading comprehension and question-answering systems.<br>
