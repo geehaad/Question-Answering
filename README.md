@@ -1,3 +1,5 @@
+
+
 # Question Answering system using a Pre-trained Bert based model 💬
 
 Question-answering models can retrieve the answer to a question from a given text, which is useful for searching for an answer in a document. <br> Some question-answering models can generate answers without context! (Hugging Face)
@@ -79,7 +81,7 @@ The dataset can be found here: <a href= "https://huggingface.co/datasets/squad">
     ```
     python src/components/main.py
     ```
-5. The output is a CSV file called 'output' in your directory.
+5. The output is a CSV file called 'output.csv' in your directory.
    
 6. To run the testing file:
     ```
@@ -153,4 +155,3 @@ Question-Answering/
 
 <p><code>requirements.txt</code>: Lists the Python packages required for the project to run successfully.</p>
 <p><code>README.md</code>: The central documentation file containing essential information about the project, its usage, and directory structure.</p>
-
